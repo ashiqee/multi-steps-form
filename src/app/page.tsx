@@ -14,6 +14,7 @@ import { Progress } from "@heroui/progress";
 import FieldInput from "@/components/Forms/FieldInput";
 import { ProfileImageStep } from "@/components/ProfileFormStep/ProfileImageStep";
 import { ReviewStep } from "@/components/ProfileFormStep/ReviewStep";
+import { ThemeSwitch } from "@/components/theme-switch";
 
 const steps = [
   "Basic Info",
@@ -111,19 +112,22 @@ export default function MultiStepForm() {
             </span>
           ))}
         </NavbarContent>
+        
+    
+     
       </HeroUINavbar>
-
-      {/* Progress Bar */}
-      <Progress
+        {/* Progress Bar */}
+        <Progress
         value={(step / (steps.length - 1)) * 100}
-        className="w-full h-2 bg-blue-200 "
+        className="w-full h-2 bg-blue-200  fixed top-16 left-0 z-50"
       />
 
+
       <div className="flex justify-center items-center min-h-[80vh]">
-        <Card className={`w-full ${step === 4 ? "max-w-5xl" : "max-w-xl"} bg-white shadow-lg rounded-lg p-6`}>
-          <CardHeader className=" text-2xl w-full font-bold">
+        <Card className={`w-full ${step === 4 ? "max-w-5xl m-4" : "max-w-xl bg-white shadow-lg rounded-lg p-6"} `}>
+          {/* <CardHeader className=" text-2xl w-full font-bold">
             <h2 className="text-center">{steps[step]}</h2>
-          </CardHeader>
+          </CardHeader> */}
           <div>
             <Formik
               initialValues={initialValues}

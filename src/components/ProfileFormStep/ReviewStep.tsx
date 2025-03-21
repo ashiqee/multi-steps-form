@@ -35,7 +35,7 @@ export const ReviewStep = ({
           </div>
 
           {/* Basic Information Preview */}
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center hover:bg-sky-100/15 border border-gray-200 shadow-lg backdrop-blur-2xl rounded-lg p-4">
             <div className="space-y-2 ">
               <div className="flex gap-2 items-center">
                 <strong className="text-lg font-medium text-gray-700">
@@ -67,7 +67,7 @@ export const ReviewStep = ({
           </div>
 
           {/* Address Information Preview */}
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center hover:bg-sky-100/15 border border-gray-200 shadow-lg backdrop-blur-2xl rounded-lg p-4">
             <div className="space-y-2 ">
               <div className="flex gap-2 items-center">
                 <strong className="text-lg font-medium text-gray-700">
@@ -110,7 +110,7 @@ export const ReviewStep = ({
           </div>
 
           {/* Social Links Preview */}
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center hover:bg-sky-100/15 border border-gray-200 shadow-lg backdrop-blur-2xl rounded-lg p-4">
             <div className="space-y-2 ">
               <div>
                 <strong className="text-lg font-medium text-gray-700">
