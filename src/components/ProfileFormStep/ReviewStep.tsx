@@ -112,19 +112,19 @@ export const ReviewStep = ({
           {/* Social Links Preview */}
           <div className="flex justify-between items-center hover:bg-sky-100/15 border border-gray-200 shadow-lg backdrop-blur-2xl rounded-lg p-4">
             <div className="space-y-2 ">
-              <div>
+              <div className="flex gap-2 items-center">
                 <strong className="text-lg font-medium text-gray-700">
-                  LinkedIn:
+                  LinkedIn: 
                 </strong>
                 <p className="text-gray-600">{values.linkedin}</p>
               </div>
-              <div>
+              <div className="flex gap-2 items-center">
                 <strong className="text-lg font-medium text-gray-700">
                   Twitter:
                 </strong>
                 <p className="text-gray-600">{values.twitter}</p>
               </div>
-              <div>
+              <div className="flex gap-2 items-center">
                 <strong className="text-lg font-medium text-gray-700">
                   Personal Website:
                 </strong>
