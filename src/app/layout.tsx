@@ -1,12 +1,17 @@
+
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
 import { Link } from "@heroui/link";
 import clsx from "clsx";
 
-import { Providers } from "./providers";
+
 
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
+import { Provider } from "react-redux";
+import { store } from "@/lib/Redux/store";
+import { Providers } from "@/lib/providers";
+
 
 
 export const metadata: Metadata = {
@@ -35,13 +40,14 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en">
       <head />
+      
       <body
         className={clsx(
           "min-h-screen bg-background font-serif antialiased",
           fontSans.variable,
         )}
       >
-        <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
+       <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
           <div className="justify-between flex flex-col h-screen">
            
             <main>
@@ -59,6 +65,7 @@ export default function RootLayout({
               </Link>
             </footer>
           </div>
+      
         </Providers>
       </body>
     </html>

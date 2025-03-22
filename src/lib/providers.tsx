@@ -1,4 +1,4 @@
-"use client";
+'use client'; // Ensure this at the top for client-side execution
 
 import type { ThemeProviderProps } from "next-themes";
 
@@ -6,6 +6,9 @@ import * as React from "react";
 import { HeroUIProvider } from "@heroui/system";
 import { useRouter } from "next/navigation";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { Provider } from "react-redux";
+import { store } from "@/lib/Redux/store";
+
 
 export interface ProvidersProps {
   children: React.ReactNode;
@@ -21,11 +24,15 @@ declare module "@react-types/shared" {
 }
 
 export function Providers({ children, themeProps }: ProvidersProps) {
-  const router = useRouter();
+  const router = useRouter(); // This requires 'use client'
 
   return (
-    <HeroUIProvider navigate={router.push}>
-      <NextThemesProvider {...themeProps}>{children}</NextThemesProvider>
-    </HeroUIProvider>
+    <Provider store={store}>
+     
+        <HeroUIProvider navigate={router.push}>
+          <NextThemesProvider {...themeProps}>{children}</NextThemesProvider>
+        </HeroUIProvider>
+
+    </Provider>
   );
 }

@@ -14,7 +14,9 @@ import { Progress } from "@heroui/progress";
 import FieldInput from "@/components/Forms/FieldInput";
 import { ProfileImageStep } from "@/components/ProfileFormStep/ProfileImageStep";
 import { ReviewStep } from "@/components/ProfileFormStep/ReviewStep";
-import { ThemeSwitch } from "@/components/theme-switch";
+import { updateForm, resetForm } from "@/lib/Redux/features/formSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/lib/Redux/store";
 
 const steps = [
   "Basic Info",
@@ -56,32 +58,22 @@ const validationSchemas = [
 export default function MultiStepForm() {
   const [step, setStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const dispatch = useDispatch();
+  const formData = useSelector((state: RootState) => state.profileData);
 
   const handleNext = () => setStep((prev) => prev + 1);
   const handleBack = () => setStep((prev) => prev - 1);
 
-  const initialValues = {
-    fullName: "",
-    email: "",
-    phone: "",
-    dob: "",
-    country: "",
-    city: "",
-    zip: "",
-    address: "",
-    profileImage: null,
-    bio: "",
-    linkedin: "",
-    twitter: "",
-    website: "",
-  };
+
 
   const handleSubmit = (values: any) => {
+    dispatch(updateForm(values));
     if (step === steps.length - 1) {
       setIsSubmitting(true);
       setTimeout(() => {
         console.log("Final Data:", values);
         alert("Form submitted successfully!");
+        dispatch(resetForm());
         setIsSubmitting(false);
       }, 2000);
     } else {
@@ -130,7 +122,21 @@ export default function MultiStepForm() {
           </CardHeader> */}
           <div>
             <Formik
-              initialValues={initialValues}
+                initialValues={{ 
+                  fullName: formData.fullName || "",
+                  email: formData.email || "",
+                  phone: formData.phone || "",
+                  dob: formData.dob || "",
+                  country: formData.country || "",
+                  city: formData.city || "",
+                  zip: formData.zip || "",
+                  address: formData.address || "",
+                  profileImage: formData.profileImage || null,
+                  bio: formData.bio || "",
+                  linkedin: formData.linkedin || "",
+                  twitter: formData.twitter || "",
+                  website: formData.website || "",
+                }}
               onSubmit={handleSubmit}
               validationSchema={validationSchemas[step]}
             >
@@ -196,7 +202,7 @@ export default function MultiStepForm() {
                           />
                         </div>
                         <FieldInput
-                          name="street"
+                          name="address"
                           label="Street Address"
                           placeholder="Enter your Street Address"
                         />
